@@ -7,7 +7,8 @@ const getIngredients = async (ingredientType: string): Promise<IItem[]> => {
       params: { type: ingredientType },
     });
 
-    const out = data.data.ingredients as IItem[];
+    let out = data.data.ingredients as IItem[];
+    out.sort((a, b) => a.name.localeCompare(b.name));
     return out;
   } catch (error) {
     let out = {} as IItem[];

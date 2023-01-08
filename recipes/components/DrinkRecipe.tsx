@@ -3,6 +3,7 @@ import {
   Flex,
   GridItem,
   GridItemProps,
+  LinkBox,
   LinkOverlay,
   Text,
 } from "@chakra-ui/react";
@@ -34,20 +35,23 @@ const DrinkRecipe = ({
       idx={idx}
       key={idx}
       {...props}
+      _hover={{ bg: "#EFEFEF" }}
     >
-      <Box w="100%" h="100%" role="group">
-        <Flex flexDirection="row">
-          <Box flex={1}>
-            <LinkOverlay onClick={() => selectFn(idx)}>
+      <LinkBox>
+        <Box w="100%" h="100%" role="group">
+          <Flex flexDirection="row">
+            <Box flex={1}>
               <Flex>
-                <Text
-                  fontFamily="heading"
-                  fontSize="1rem"
-                  fontWeight="700"
-                  textTransform="uppercase"
-                >
-                  {recipe.name}
-                </Text>
+                <LinkOverlay onClick={() => selectFn(idx)}>
+                  <Text
+                    fontFamily="heading"
+                    fontSize="1rem"
+                    fontWeight="700"
+                    textTransform="uppercase"
+                  >
+                    {recipe.name}
+                  </Text>
+                </LinkOverlay>
               </Flex>
               <Text
                 overflow="ellipsis"
@@ -65,10 +69,10 @@ const DrinkRecipe = ({
                     )
                   )}
               </Box>
-            </LinkOverlay>
-          </Box>
-        </Flex>
-      </Box>
+            </Box>
+          </Flex>
+        </Box>
+      </LinkBox>
     </GridItem>
   );
 };
